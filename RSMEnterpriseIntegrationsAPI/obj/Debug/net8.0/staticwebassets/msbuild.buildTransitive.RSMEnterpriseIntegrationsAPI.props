@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\RSMEnterpriseIntegrationsAPI.props" />
+</Project>
