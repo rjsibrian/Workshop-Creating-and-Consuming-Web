@@ -42,11 +42,5 @@ namespace RSMEnterpriseIntegrationsAPI.Infrastructure.Repositories
                 .AsNoTracking()
                 .FirstOrDefaultAsync(pc => pc.SalesOrderID == id);
         }
-
-        public async Task<int> UpdateSalesOrderHeader(SalesOrderHeader salesOrderHeader)
-        {
-            _context.Update(salesOrderHeader);
-            return await _context.SaveChangesAsync();
-        }
     }
 }

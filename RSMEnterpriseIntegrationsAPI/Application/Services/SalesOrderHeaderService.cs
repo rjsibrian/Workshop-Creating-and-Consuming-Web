@@ -139,38 +139,6 @@ namespace RSMEnterpriseIntegrationsAPI.Application.Services
             return dto;
         }
 
-        public async Task<int> UpdateSalesOrderHeader(UpdateSalesOrderHeaderDto salesOrderHeaderDto)
-        {
-            if(salesOrderHeaderDto is null)
-            {
-                throw new BadRequestException("Product category info is not valid.");
-            }
-            var salesOrderHeader = await ValidateSalesOrderHeaderExistence(salesOrderHeaderDto.SalesOrderID);
-
-            salesOrderHeader.RevisionNumber = salesOrderHeaderDto.RevisionNumber;
-            salesOrderHeader.OrderDate = salesOrderHeaderDto.OrderDate;
-            salesOrderHeader.DueDate = salesOrderHeaderDto.DueDate;
-            salesOrderHeader.ShipDate = salesOrderHeaderDto.ShipDate;
-            salesOrderHeader.Status = salesOrderHeaderDto.Status;
-            salesOrderHeader.OnlineOrderFlag = salesOrderHeaderDto.OnlineOrderFlag;
-            salesOrderHeader.PurchaseOrderNumber = salesOrderHeaderDto.PurchaseOrderNumber;
-            salesOrderHeader.AccountNumber = salesOrderHeaderDto.AccountNumber;
-            salesOrderHeader.CustomerID = salesOrderHeaderDto.CustomerID;
-            salesOrderHeader.SalesPersonID = salesOrderHeaderDto.SalesPersonID;
-            salesOrderHeader.TerritoryID = salesOrderHeaderDto.TerritoryID;
-            salesOrderHeader.BillToAddressID = salesOrderHeaderDto.BillToAddressID;
-            salesOrderHeader.ShipToAddressID = salesOrderHeaderDto.ShipToAddressID;
-            salesOrderHeader.ShipMethodID = salesOrderHeaderDto.ShipMethodID;
-            salesOrderHeader.CreditCardID = salesOrderHeaderDto.CreditCardID;
-            salesOrderHeader.CreditCardApprovalCode = salesOrderHeaderDto.CreditCardApprovalCode;
-            salesOrderHeader.CurrencyRateID = salesOrderHeaderDto.CurrencyRateID;
-            salesOrderHeader.SubTotal = salesOrderHeaderDto.SubTotal;
-            salesOrderHeader.TaxAmt = salesOrderHeaderDto.TaxAmt;
-            salesOrderHeader.Freight = salesOrderHeaderDto.Freight;
-
-            return await _salesOrderHeaderRepository.UpdateSalesOrderHeader(salesOrderHeader);
-        }
-
         private async Task<SalesOrderHeader> ValidateSalesOrderHeaderExistence(int id)
         {
             var existingSalesOrderHeader = await _salesOrderHeaderRepository.GetSalesOrderHeaderById(id) 

@@ -39,11 +39,5 @@ namespace RSMEnterpriseIntegrationsAPI.Controllers
         {
             return Ok(await _service.CreateSalesOrderHeader(dto));
         }
-
-        [HttpPut("Update")]
-        public async Task<IActionResult> Update(UpdateSalesOrderHeaderDto dto)
-        {
-            return Ok(await _service.UpdateSalesOrderHeader(dto));
-        }
     }
 }
